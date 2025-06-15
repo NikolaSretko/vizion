@@ -125,12 +125,12 @@ const ClientLogos = () => {
   const logos = [
     { name: 'DEEP CARE', src: '/dc-logo-black.png' },
     { name: 'ZIEGLER', src: '/ziegler.png'},
-    { name: 'LIFESTYLE BRAND'},
-    { name: 'HOME & LIVING'},
-    { name: 'SPORT EQUIPMENT'},
-    { name: 'FOOD MARKET' },
-    { name: 'BEAUTY BRAND' },
-    { name: 'ELECTRONICS' } // kein src = Text fallback
+    { name: 'SCHLAFGUT', src: '/schlafgut.svg' },
+    { name: 'BLOCHING', src: '/bloc.png' },
+    { name: 'GOELTENBODT', src: '/GOE.svg' },
+    { name: 'PROV' , src: '/pro.png'},
+    // { name: 'BEAUTY BRAND' },
+    // { name: 'ELECTRONICS' } // kein src = Text fallback
   ];
 
   const certifications = [
