@@ -1,0 +1,114 @@
+{
+  "header": {
+    "home": "Home",
+    "services": "Services",
+    "consulting": "Consulting",
+    "solutions": "Solutions",
+    "about": "About Us",
+    "resources": "Resources",
+    "contact": "Contact",
+    "letsTalk": "Let's Talk"
+  },
+  "hero": {
+    "title": "Scale Your E-Commerce",
+    "subtitle": "From strategy to implementation - your partner for digital commerce",
+    "cta": "Start Growing"
+  },
+  "services": {
+    "title": "Our Services",
+    "ecommerceTech": {
+      "title": "E-Commerce Technology",
+      "shopware": "Shopware",
+      "shopify": "Shopify",
+      "webDesign": "Web Design",
+      "uxUiDesign": "UX & UI Design",
+      "migration": "Migration",
+      "appsFeatures": "Apps & Features",
+      "relaunch": "Relaunch Projects"
+    },
+    "ecommercePerformance": {
+      "title": "E-Commerce Performance",
+      "marketingAutomation": "Marketing Automation",
+      "searchEngineAds": "Search Engine Advertising",
+      "seo": "SEO (Technical, Content, Authority)",
+      "geoTargeting": "GEO Targeting",
+      "onsiteMarketing": "Onsite Marketing"
+    },
+    "itInfrastructure": {
+      "title": "IT Infrastructure",
+      "interfaces": "Interfaces & Integrations",
+      "erpSystems": "ERP Systems",
+      "hosting": "Hosting & Security",
+      "monitoring": "Monitoring & Maintenance"
+    },
+    "marketplaceManagement": {
+      "title": "Marketplace Management",
+      "amazon": "Amazon Services",
+      "otto": "OTTO Market",
+      "kaufland": "Kaufland.de",
+      "zalando": "Zalando",
+      "bol": "Bol.com",
+      "galaxus": "Galaxus / Digitec",
+      "other": "Limango / Westwing / Veepee"
+    }
+  },
+  "consulting": {
+    "title": "Consulting",
+    "strategy": "Digital Commerce Strategy",
+    "evaluation": "Systems & Tools Evaluation",
+    "audits": "Audits & Workshops",
+    "branding": "Brand Positioning & Messaging",
+    "businessDevelopment": "Business Development Support"
+  },
+  "solutions": {
+    "title": "Solutions",
+    "dtcGrowth": "DTC Brand Growth",
+    "marketplaceExpansion": "Marketplace Expansion",
+    "erpPlanning": "ERP & Tech Stack Planning",
+    "shopRelaunch": "Online Shop Relaunch",
+    "international": "Internationalization Strategy",
+    "rescue": "Performance Rescue"
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "mission": "Our Mission",
+    "team": "The Team",
+    "values": "Values & Way of Working",
+    "caseStudies": "Case Studies",
+    "testimonials": "Client Testimonials",
+    "certifications": "Certifications & Partners",
+    "careers": "Careers"
+  },
+  "resources": {
+    "title": "Resources",
+    "blog": "Blog & Insights",
+    "downloads": "Downloads",
+    "webinars": "Webinars / Videos",
+    "faq": "FAQs"
+  },
+  "contact": {
+    "title": "Contact",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "message": "Message",
+      "submit": "Submit"
+    },
+    "bookCall": "Book a Call",
+    "location": "Location",
+    "socialMedia": "Social Media",
+    "chat": "WhatsApp / Live Chat"
+  },
+  "cta": {
+    "letsTalk": "Let's Talk",
+    "contactNow": "Contact Now"
+  },
+  "footer": {
+    "copyright": "© 2025 Vizio Commerce. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "imprint": "Imprint",
+    "terms": "Terms of Service"
+  }
+}
