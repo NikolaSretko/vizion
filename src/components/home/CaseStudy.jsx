@@ -201,7 +201,7 @@ const CaseStudy = () => {
                   left={0}
                   right={0}
                   bottom={0}
-                  backgroundImage="../../../public/3-scaled.png"
+                  backgroundImage="/3-scaled.png"
                   backgroundSize="cover"
                   backgroundPosition="center"
                   display="flex"
