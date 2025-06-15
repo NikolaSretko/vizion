@@ -50,7 +50,7 @@ const Feature = ({ title, text, icon, link, isNew = false, delay = 0 }) => {
         to={link}
         direction="column"
         align="flex-start"
-        padding={8}
+        padding={{ base: 5, md: 8 }}
         rounded="xl"
         bg="white"
         borderWidth="1px"
@@ -87,25 +87,25 @@ const Feature = ({ title, text, icon, link, isNew = false, delay = 0 }) => {
         )}
         
         <Flex
-          w={16}
-          h={16}
+          w={{ base: 12, md: 16 }}
+          h={{ base: 12, md: 16 }}
           align="center"
           justify="center"
           color="white"
           rounded="lg"
           bg="brand.500"
-          mb={6}
-          fontSize="3xl"
+          mb={{ base: 4, md: 6 }}
+          fontSize={{ base: "2xl", md: "3xl" }}
           shadow="lg"
         >
           <Icon as={icon} />
         </Flex>
         
-        <Heading size="md" mb={3} color="gray.800">
+        <Heading size={{ base: "sm", md: "md" }} mb={{ base: 2, md: 3 }} color="gray.800">
           {title}
         </Heading>
         
-        <Text color="gray.600" fontSize="md" flex={1}>
+        <Text color="gray.600" fontSize={{ base: "sm", md: "md" }} flex={1}>
           {text}
         </Text>
         
@@ -180,7 +180,7 @@ const ServiceOverview = () => {
               letterSpacing="wide"
               mb={2}
             >
-              Unsere Expertise
+              Über 15 Jahre Expertise
             </Text>
             <MotionHeading
               as="h2"
@@ -191,7 +191,7 @@ const ServiceOverview = () => {
               bgClip="text"
               mb={4}
             >
-              {t('services.title')}
+              Unsere Leistungen
             </MotionHeading>
             <MotionText
               fontSize="lg"
@@ -199,12 +199,12 @@ const ServiceOverview = () => {
               textAlign="center"
               maxW="800px"
             >
-              Von der technischen Umsetzung bis zur Performance-Optimierung - wir bieten alle Dienstleistungen, 
-              die Sie für Ihren E-Commerce-Erfolg benötigen.
+              Maßgeschneiderte IT-Lösungen aus einer Hand - von der strategischen Beratung 
+              bis zur technischen Umsetzung und kontinuierlichen Optimierung.
             </MotionText>
           </MotionFlex>
 
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10} width="100%">
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={{ base: 4, md: 8 }} width="100%">
             <Feature
               icon={FaShoppingCart}
               title={t('services.ecommerceTech.title')}

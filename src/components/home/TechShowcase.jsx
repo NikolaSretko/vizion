@@ -40,7 +40,7 @@ const TechCard = ({ icon, name, description, index, badge = null }) => {
       <Flex
         direction="column"
         bg="white"
-        p={6}
+        p={{ base: 5, md: 6 }}
         borderRadius="xl"
         boxShadow="md"
         border="1px solid"
@@ -69,20 +69,20 @@ const TechCard = ({ icon, name, description, index, badge = null }) => {
           </Badge>
         )}
         <Flex
-          w={12}
-          h={12}
+          w={{ base: 10, md: 12 }}
+          h={{ base: 10, md: 12 }}
           align="center"
           justify="center"
           borderRadius="full"
-          bg="brand.400"
-          mb={4}
+          bg="brand.500"
+          mb={{ base: 3, md: 4 }}
         >
-          <Icon as={icon} color="white" boxSize={6} />
+          <Icon as={icon} color="white" boxSize={{ base: 5, md: 6 }} />
         </Flex>
-        <Heading size="md" mb={2} color="gray.800">
+        <Heading size={{ base: "sm", md: "md" }} mb={{ base: 1, md: 2 }} color="gray.800">
           {name}
         </Heading>
-        <Text color="gray.600">
+        <Text color="gray.600" fontSize={{ base: "sm", md: "md" }}>
           {description}
         </Text>
       </Flex>
@@ -179,7 +179,7 @@ const TechShowcase = () => {
               letterSpacing="wide"
               mb={2}
             >
-              Über 15 Jahre Expertise
+              Technologien & Expertise
             </Text>
             <MotionHeading
               as="h2"
@@ -190,10 +190,7 @@ const TechShowcase = () => {
               bgClip="text"
               mb={4}
             >
-              IT-Services & Software-Entwicklung
-              <Box as="span" display="block">
-                alles aus einer Hand
-              </Box>
+              Unsere Technologien
             </MotionHeading>
             <MotionText
               fontSize="lg"
@@ -201,12 +198,12 @@ const TechShowcase = () => {
               textAlign="center"
               maxW="800px"
             >
-              Wir bieten die komplette Lösung für Ihren digitalen Erfolg - von der strategischen 
-              Beratung über die Konzeptionierung bis zur technischen Umsetzung und kontinuierlichen Optimierung.
+              Wir setzen auf modernste Technologien und bewährte Frameworks, um innovative 
+              und zukunftssichere Lösungen für Ihr Unternehmen zu entwickeln.
             </MotionText>
           </MotionFlex>
 
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="100%">
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={{ base: 5, md: 8 }} width="100%">
             {technologies.map((tech, index) => (
               <TechCard
                 key={tech.name}
@@ -241,11 +238,11 @@ const TechShowcase = () => {
                 Mit über 15 Jahren Erfahrung bieten wir Ihnen die gesamte Expertise für Ihren digitalen Erfolg
               </Text>
               
-              <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} pt={6} width="100%">
+              <SimpleGrid columns={{ base: 2, md: 4 }} spacing={{ base: 4, md: 6 }} pt={6} width="100%">
                 <VStack spacing={2} align="center">
                   <Box 
-                    w="50px" 
-                    h="50px" 
+                    w={{ base: "40px", md: "50px" }}
+                    h={{ base: "40px", md: "50px" }}
                     borderRadius="full" 
                     bg="brand.400" 
                     display="flex" 
@@ -253,7 +250,7 @@ const TechShowcase = () => {
                     justifyContent="center"
                     mb={2}
                   >
-                    <Text fontWeight="bold" color="white">1</Text>
+                    <Text fontWeight="bold" color="white" fontSize={{ base: "sm", md: "md" }}>1</Text>
                   </Box>
                   <Heading size="sm" color="gray.700">Beratung</Heading>
                   <Text color="gray.600" fontSize="sm" textAlign="center">
@@ -263,8 +260,8 @@ const TechShowcase = () => {
                 
                 <VStack spacing={2} align="center">
                   <Box 
-                    w="50px" 
-                    h="50px" 
+                    w={{ base: "40px", md: "50px" }}
+                    h={{ base: "40px", md: "50px" }}
                     borderRadius="full" 
                     bg="brand.400" 
                     display="flex" 
@@ -272,7 +269,7 @@ const TechShowcase = () => {
                     justifyContent="center"
                     mb={2}
                   >
-                    <Text fontWeight="bold" color="white">2</Text>
+                    <Text fontWeight="bold" color="white" fontSize={{ base: "sm", md: "md" }}>2</Text>
                   </Box>
                   <Heading size="sm" color="gray.700">Design</Heading>
                   <Text color="gray.600" fontSize="sm" textAlign="center">
@@ -282,8 +279,8 @@ const TechShowcase = () => {
                 
                 <VStack spacing={2} align="center">
                   <Box 
-                    w="50px" 
-                    h="50px" 
+                    w={{ base: "40px", md: "50px" }}
+                    h={{ base: "40px", md: "50px" }}
                     borderRadius="full" 
                     bg="brand.400" 
                     display="flex" 
@@ -291,7 +288,7 @@ const TechShowcase = () => {
                     justifyContent="center"
                     mb={2}
                   >
-                    <Text fontWeight="bold" color="white">3</Text>
+                    <Text fontWeight="bold" color="white" fontSize={{ base: "sm", md: "md" }}>3</Text>
                   </Box>
                   <Heading size="sm" color="gray.700">Entwicklung</Heading>
                   <Text color="gray.600" fontSize="sm" textAlign="center">
@@ -301,8 +298,8 @@ const TechShowcase = () => {
                 
                 <VStack spacing={2} align="center">
                   <Box 
-                    w="50px" 
-                    h="50px" 
+                    w={{ base: "40px", md: "50px" }}
+                    h={{ base: "40px", md: "50px" }}
                     borderRadius="full" 
                     bg="brand.400" 
                     display="flex" 
@@ -310,7 +307,7 @@ const TechShowcase = () => {
                     justifyContent="center"
                     mb={2}
                   >
-                    <Text fontWeight="bold" color="white">4</Text>
+                    <Text fontWeight="bold" color="white" fontSize={{ base: "sm", md: "md" }}>4</Text>
                   </Box>
                   <Heading size="sm" color="gray.700">Wachstum</Heading>
                   <Text color="gray.600" fontSize="sm" textAlign="center">

@@ -55,15 +55,61 @@ const VideoHero = () => {
   const floatAnimation = `${float} 6s ease-in-out infinite`;
   const pulseAnimation = `${pulse} 3s ease-in-out infinite`;
   
-  // Make sure video is visible
+  // Make sure video is visible and autoplay works on mobile
   useEffect(() => {
     const video = videoRef.current;
     
     if (video) {
-      // Force playback
-      video.play().catch(error => {
-        console.error("Video playback failed:", error);
+      // Force playback for mobile devices with optimized approach
+      const playVideo = () => {
+        // Set important attributes for better mobile compatibility
+        video.setAttribute('playsinline', true);
+        video.setAttribute('webkit-playsinline', true);
+        video.setAttribute('muted', true);
+        video.muted = true; // Explicitly set muted property
+        
+        // Make sure preload is set to auto
+        video.preload = 'auto';
+        
+        // Attempt to play the video
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.error("Video playback failed:", error);
+            
+            // Set up multiple interaction events to trigger playback on iOS
+            const playOnInteraction = () => {
+              video.play().catch(e => console.log("Still can't play video:", e));
+            };
+            
+            // Try on various user interactions (iOS requires user interaction)
+            document.body.addEventListener('touchstart', playOnInteraction, {once: true});
+            document.body.addEventListener('click', playOnInteraction, {once: true});
+            document.body.addEventListener('scroll', playOnInteraction, {once: true});
+          });
+        }
+      };
+      
+      // Initial play attempt
+      playVideo();
+      
+      // Try playing again when the page becomes visible (handles tab switching)
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          playVideo();
+        }
       });
+      
+      // Handle iOS low power mode and other edge cases with periodic checks
+      const playbackCheck = setInterval(() => {
+        if (video.paused && document.visibilityState === 'visible') {
+          playVideo();
+        }
+      }, 1000);
+      
+      // Cleanup interval on component unmount
+      return () => clearInterval(playbackCheck);
     }
   }, []);
 
@@ -113,7 +159,7 @@ const VideoHero = () => {
           zIndex={3}
         />
         
-        {/* CPU video background */}
+        {/* CPU video background - optimized for all devices including Safari/iOS */}
         <Box
           as="video"
           ref={videoRef}
@@ -121,6 +167,7 @@ const VideoHero = () => {
           loop
           muted
           playsInline
+          preload="auto"
           position="absolute"
           objectFit="cover"
           width="100%"
@@ -178,11 +225,11 @@ const VideoHero = () => {
           transition={{ duration: 1 }}
           style={{ y: textY }}
         >
-          <VStack spacing={8} align={{ base: "center", md: "flex-start" }} maxW={{ base: "100%", md: "70%" }}>
+          <VStack spacing={{ base: 5, md: 8 }} align={{ base: "center", md: "flex-start" }} maxW={{ base: "100%", md: "70%" }}>
             <MotionText
               color="accent.600"
               fontWeight="bold"
-              fontSize="xl"
+              fontSize={{ base: "md", md: "xl" }}
               letterSpacing="wide"
               textTransform="uppercase"
               initial={{ opacity: 0, y: 20 }}
@@ -194,7 +241,7 @@ const VideoHero = () => {
             
             <MotionHeading
               as="h1"
-              fontSize={{ base: '4xl', sm: '5xl', md: '6xl', lg: '7xl' }}
+              fontSize={{ base: '3xl', sm: '4xl', md: '5xl', lg: '6xl' }}
               fontWeight={800}
               lineHeight={1.2}
               bgGradient="linear(to-r, brand.500, accent.500)"

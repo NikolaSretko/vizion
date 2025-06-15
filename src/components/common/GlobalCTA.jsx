@@ -103,7 +103,7 @@ const GlobalCTA = () => {
 
       {/* Full width CTA section */}
       <Box 
-        py={20} 
+        py={{ base: 14, md: 20 }} 
         bg="white" 
         position="relative" 
         overflow="hidden"
@@ -166,7 +166,7 @@ const GlobalCTA = () => {
               
               <Heading 
                 as="h2" 
-                fontSize={{ base: '3xl', md: '4xl' }} 
+                fontSize={{ base: '2xl', md: '4xl' }} 
                 fontWeight="bold" 
                 color="gray.800"
                 lineHeight="1.2"
@@ -176,7 +176,7 @@ const GlobalCTA = () => {
                 Bereit, Ihren E-Commerce auf das nächste Level zu bringen?
               </Heading>
               
-              <Text fontSize="lg" color="gray.600" maxW="600px">
+              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" maxW="600px">
                 Vereinbaren Sie ein kostenloses Beratungsgespräch mit unseren E-Commerce-Experten 
                 und erfahren Sie, wie wir Ihnen bei der Skalierung Ihres Online-Geschäfts helfen können.
               </Text>

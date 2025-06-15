@@ -1,15 +1,13 @@
-import { 
-  Box, 
-  SimpleGrid, 
-  Container, 
-  Text, 
-  Flex, 
-  Image, 
+import {
+  Box,
+  SimpleGrid,
+  Container,
+  Text,
+  Flex,
+  Image,
   Heading,
-  HStack,
   VStack,
-  Divider,
-  useColorModeValue 
+  Divider
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +17,9 @@ const MotionFlex = motion(Flex);
 const MotionText = motion(Text);
 const MotionHeading = motion(Heading);
 
-const LogoBox = ({ name, index }) => {
+const LogoBox = ({ name, src, index }) => {
+  const hasImage = !!src;
+
   return (
     <MotionBox
       initial={{ opacity: 0, y: 20 }}
@@ -44,15 +44,27 @@ const LogoBox = ({ name, index }) => {
           boxShadow: "lg"
         }}
       >
-        <Text fontSize="xl" fontWeight="bold" color="gray.700">
-          {name}
-        </Text>
+        {hasImage ? (
+          <Image
+            src={src}
+            alt={name}
+            maxH="60px"
+            maxW="100%"
+            objectFit="contain"
+          />
+        ) : (
+          <Text fontSize="xl" fontWeight="bold" color="gray.700" textAlign="center">
+            {name}
+          </Text>
+        )}
       </Flex>
     </MotionBox>
   );
 };
 
-const CertificationBox = ({ name, image, index }) => {
+const CertificationBox = ({ name, src, index }) => {
+  const hasImage = !!src;
+
   return (
     <MotionBox
       initial={{ opacity: 0, y: 20 }}
@@ -85,9 +97,19 @@ const CertificationBox = ({ name, image, index }) => {
           alignItems="center" 
           justifyContent="center"
         >
-          <Text fontSize="xl" fontWeight="bold" color="brand.500">
-            {name.charAt(0)}
-          </Text>
+          {hasImage ? (
+            <Image
+              src={src}
+              alt={name}
+              maxH="30px"
+              maxW="30px"
+              objectFit="contain"
+            />
+          ) : (
+            <Text fontSize="xl" fontWeight="bold" color="brand.500">
+              {name.charAt(0)}
+            </Text>
+          )}
         </Box>
         <Text fontWeight="bold" color="gray.700" textAlign="center">
           {name}
@@ -99,29 +121,27 @@ const CertificationBox = ({ name, image, index }) => {
 
 const ClientLogos = () => {
   const { t } = useTranslation();
-  
-  // In einem echten Projekt würdest du echte Kundenlogos verwenden
+
   const logos = [
-    { name: 'PREMIUM FASHION' },
-    { name: 'TECH SOLUTIONS' },
-    { name: 'LIFESTYLE BRAND' },
-    { name: 'HOME & LIVING' },
-    { name: 'SPORT EQUIPMENT' },
+    { name: 'DEEP CARE', src: '/dc-logo-black.png' },
+    { name: 'ZIEGLER', src: '/ziegler.png'},
+    { name: 'LIFESTYLE BRAND'},
+    { name: 'HOME & LIVING'},
+    { name: 'SPORT EQUIPMENT'},
     { name: 'FOOD MARKET' },
     { name: 'BEAUTY BRAND' },
-    { name: 'ELECTRONICS' },
+    { name: 'ELECTRONICS' } // kein src = Text fallback
   ];
 
   const certifications = [
-    { name: 'Shopware Business Partner', image: '/path/to/shopware.svg' },
-    { name: 'Shopify Partner', image: '/path/to/shopify.svg' },
-    { name: 'Google Premier Partner', image: '/path/to/google.svg' },
-    { name: 'Amazon Partner', image: '/path/to/amazon.svg' },
+    { name: 'Shopware Business Partner', src: '/shopware.png' },
+    { name: 'Shopify Partner' , src: '/shopify.png' },
+    { name: 'Google Premier Partner', src: '/google.png' },
+    { name: 'Amazon Partner', src: '/amazon.png' } // kein src = Initiale fallback
   ];
 
   return (
     <Box py={20} bg="white" position="relative" overflow="hidden">
-      {/* Background gradient */}
       <Box
         position="absolute"
         top="0"
@@ -174,13 +194,9 @@ const ClientLogos = () => {
             </MotionText>
           </MotionFlex>
 
-          <SimpleGrid
-            columns={{ base: 2, md: 4 }}
-            spacing={8}
-            width="100%"
-          >
+          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={8} width="100%">
             {logos.map((logo, index) => (
-              <LogoBox key={index} name={logo.name} index={index} />
+              <LogoBox key={index} name={logo.name} src={logo.src} index={index} />
             ))}
           </SimpleGrid>
 
@@ -191,7 +207,7 @@ const ClientLogos = () => {
               as="h3"
               fontSize="2xl"
               fontWeight="bold"
-              color="white"
+              color="gray.800"
               textAlign="center"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -201,79 +217,12 @@ const ClientLogos = () => {
               Zertifizierungen & Partnerschaften
             </MotionHeading>
 
-            <SimpleGrid 
-              columns={{ base: 1, sm: 2, md: 4 }} 
-              spacing={8} 
-              width="100%"
-            >
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8} width="100%">
               {certifications.map((cert, index) => (
-                <CertificationBox 
-                  key={index} 
-                  name={cert.name} 
-                  image={cert.image} 
-                  index={index} 
-                />
+                <CertificationBox key={index} name={cert.name} src={cert.src} index={index} />
               ))}
             </SimpleGrid>
           </VStack>
-
-          {/* Testimonial Banner */}
-          <MotionBox
-            width="100%"
-            p={8}
-            borderRadius="xl"
-            bg="white"
-            borderWidth="1px"
-            borderColor="gray.200"
-            boxShadow="md"
-            position="relative"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Flex direction={{ base: 'column', md: 'row' }} align="center">
-              <Box 
-                flex={1} 
-                p={5} 
-                borderRadius="full" 
-                position="relative"
-                display={{ base: 'none', md: 'block' }}
-              >
-                <Box
-                  position="absolute"
-                  width="130px"
-                  height="130px"
-                  borderRadius="full"
-                  bgGradient="linear(to-r, brand.100, accent.100)"
-                  opacity={0.4}
-                  left="50%"
-                  top="50%"
-                  transform="translate(-50%, -50%)"
-                />
-                <Text 
-                  fontSize="8xl" 
-                  fontWeight="bold" 
-                  color="brand.500" 
-                  textAlign="center"
-                  opacity={0.8}
-                >
-                  "
-                </Text>
-              </Box>
-              <VStack flex={3} spacing={4} align={{ base: 'center', md: 'flex-start' }}>
-                <Text fontSize="xl" color="gray.700" fontStyle="italic" textAlign={{ base: 'center', md: 'left' }}>
-                  "Die Zusammenarbeit mit VIZIO Commerce hat unseren Online-Shop auf ein neues Level gebracht. 
-                  Die professionelle Beratung und technische Umsetzung waren hervorragend, und die Performance-Optimierung 
-                  hat zu einer deutlichen Umsatzsteigerung geführt."
-                </Text>
-                <Box>
-                  <Text fontWeight="bold" color="gray.800">Marcus Schmidt</Text>
-                  <Text color="gray.600">CEO, Premium Fashion GmbH</Text>
-                </Box>
-              </VStack>
-            </Flex>
-          </MotionBox>
         </VStack>
       </Container>
     </Box>

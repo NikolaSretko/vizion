@@ -135,7 +135,7 @@ const Header = () => {
             mr={10}
           >
             <Link to="/">
-              <Box as="img" src="/logo.svg" alt="Vizionists Logo" height="45px" />
+              <Box as="img" src="/logo.svg" alt="Vizionists Logo" height={{ base: "35px", md: "45px" }} />
             </Link>
           </MotionFlex>
 

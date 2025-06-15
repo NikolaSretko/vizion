@@ -7,11 +7,8 @@ import {
   Flex,
   Link,
   Heading,
-  ButtonGroup,
   IconButton,
   Input,
-  Button,
-  Divider,
   VStack,
   HStack,
   Icon,
@@ -36,10 +33,10 @@ const ListHeader = ({ children }) => {
   return (
     <Heading 
       as="h4" 
-      fontSize="lg" 
+      fontSize={{ base: "sm", md: "md" }}
       fontWeight="bold" 
       color="gray.800" 
-      mb={4}
+      mb={{ base: 1, md: 2 }}
       whiteSpace="nowrap"
     >
       {children}
@@ -52,11 +49,12 @@ const FooterLink = ({ children, to }) => (
     as={RouterLink} 
     to={to} 
     color="gray.600" 
+    fontSize={{ base: "xs", md: "xs" }}
     _hover={{ 
       color: 'brand.500',
       textDecoration: 'none' 
     }}
-    mb={2}
+    mb={{ base: 1, md: 1 }}
     display="inline-block"
   >
     {children}
@@ -69,8 +67,8 @@ const SocialButton = ({ children, label, href }) => {
       bg="gray.100"
       color="gray.700"
       rounded="full"
-      w={10}
-      h={10}
+      w={8}
+      h={8}
       cursor="pointer"
       as="a"
       href={href}
@@ -84,7 +82,7 @@ const SocialButton = ({ children, label, href }) => {
         transform: 'translateY(-2px)',
       }}
       aria-label={label}
-      size="md"
+      size="sm"
       icon={children}
     />
   );
@@ -101,27 +99,21 @@ const Footer = () => {
       borderTop="1px solid"
       borderColor="gray.100"
     >
-      <Container as={Stack} maxW="container.xl" py={16}>
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 5 }} spacing={8}>
-          <Stack align="flex-start" spacing={6}>
+      <Container as={Stack} maxW="container.xl" py={{ base: 6, md: 10 }}>
+        <SimpleGrid columns={{ base: 2, sm: 2, md: 5 }} spacing={{ base: 4, md: 6 }}>
+          <Stack align="flex-start" spacing={{ base: 2, md: 3 }}>
             <Box>
-              <Box as="img" src="/logo.svg" alt="Vizionists Logo" height="50px" mb={4} />
+              <Box as="img" src="/logo.svg" alt="Vizionists Logo" height={{ base: "30px", md: "35px" }} mb={2} />
               <Text 
-                fontSize="2xl" 
-                fontWeight="extrabold" 
-                bgGradient="linear(to-r, brand.400, accent.400)" 
-                bgClip="text"
-                letterSpacing="tight"
-                display="none"
+                color="gray.600" 
+                fontSize={{ base: "xs", md: "xs" }} 
+                maxW="250px"
+                lineHeight="1.3"
               >
-                VIZIO
-              </Text>
-              <Text color="gray.400" maxW="300px">
-                Ihr Partner für digitalen Handel und E-Commerce-Lösungen. 
-                Wir bringen Ihr Geschäft auf das nächste Level.
+                Ihr Partner für digitale Lösungen und E-Commerce.
               </Text>
             </Box>
-            <Stack direction="row" spacing={4}>
+            <Stack direction="row" spacing={2} mt={1}>
               <SocialButton label="Twitter" href="#">
                 <FaTwitter />
               </SocialButton>
@@ -137,17 +129,16 @@ const Footer = () => {
             </Stack>
           </Stack>
 
-          <Stack align="flex-start">
+          <Stack align="flex-start" spacing={1}>
             <ListHeader>{t('header.services')}</ListHeader>
             <FooterLink to="/services/ecommerce-technology">{t('services.ecommerceTech.title')}</FooterLink>
             <FooterLink to="/services/ecommerce-performance">{t('services.ecommercePerformance.title')}</FooterLink>
             <FooterLink to="/services/it-infrastructure">{t('services.itInfrastructure.title')}</FooterLink>
             <FooterLink to="/services/marketplace-management">{t('services.marketplaceManagement.title')}</FooterLink>
             <FooterLink to="/services/app-development">App-Entwicklung</FooterLink>
-            <FooterLink to="/services/ux-design">UX/UI Design</FooterLink>
           </Stack>
 
-          <Stack align="flex-start">
+          <Stack align="flex-start" spacing={1}>
             <ListHeader>Unternehmen</ListHeader>
             <FooterLink to="/about-us">{t('aboutUs.mission')}</FooterLink>
             <FooterLink to="/about-us/team">{t('aboutUs.team')}</FooterLink>
@@ -156,7 +147,7 @@ const Footer = () => {
             <FooterLink to="/about-us/careers">{t('aboutUs.careers')}</FooterLink>
           </Stack>
 
-          <Stack align="flex-start">
+          <Stack align="flex-start" spacing={1}>
             <ListHeader>Nützliche Links</ListHeader>
             <FooterLink to="/consulting">{t('header.consulting')}</FooterLink>
             <FooterLink to="/solutions">{t('header.solutions')}</FooterLink>
@@ -165,26 +156,28 @@ const Footer = () => {
             <FooterLink to="/contact">{t('header.contact')}</FooterLink>
           </Stack>
 
-          <Stack align="flex-start" spacing={6}>
+          <Stack align="flex-start" spacing={3}>
             <ListHeader>Kontakt</ListHeader>
             
-            <HStack spacing={3}>
-              <Icon as={FaPhone} color="brand.500" />
-              <Text>+49 (0) 89 1234567</Text>
+            <HStack spacing={2}>
+              <Icon as={FaPhone} color="brand.500" boxSize={{ base: 3, md: 3 }} />
+              <Text fontSize={{ base: "xs", md: "xs" }}>+49 (0) 89 1234567</Text>
             </HStack>
             
-            <HStack spacing={3}>
-              <Icon as={FaEnvelope} color="brand.500" />
-              <Text>info@vizio-commerce.com</Text>
+            <HStack spacing={2}>
+              <Icon as={FaEnvelope} color="brand.500" boxSize={{ base: 3, md: 3 }} />
+              <Text fontSize={{ base: "xs", md: "xs" }}>info@vizio-commerce.com</Text>
             </HStack>
             
-            <HStack spacing={3} align="flex-start">
-              <Icon as={FaMapMarkerAlt} color="brand.500" mt={1} />
-              <Text>Musterstraße 123<br />80331 München<br />Deutschland</Text>
+            <HStack spacing={2} align="flex-start">
+              <Icon as={FaMapMarkerAlt} color="brand.500" mt={0.5} boxSize={{ base: 3, md: 3 }} />
+              <Text fontSize={{ base: "xs", md: "xs" }} lineHeight="1.3">
+                Musterstraße 123<br />80331 München
+              </Text>
             </HStack>
             
             <MotionBox
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
@@ -194,17 +187,19 @@ const Footer = () => {
                 position="relative"
                 bg="gray.50" 
                 borderRadius="md" 
-                p={4}
+                p={{ base: 2, md: 3 }}
                 borderWidth="1px"
                 borderColor="gray.200"
                 boxShadow="sm"
               >
-                <Text fontWeight="medium" mb={2} color="gray.700">Newsletter abonnieren</Text>
-                <HStack>
+                <Text fontWeight="medium" mb={1} color="gray.700" fontSize="xs">Newsletter</Text>
+                <HStack spacing={1}>
                   <Input 
                     placeholder="Ihre E-Mail"
                     bg="white"
                     borderColor="gray.200"
+                    size="sm"
+                    fontSize="xs"
                     _focus={{
                       borderColor: "brand.500",
                       boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)",
@@ -213,6 +208,7 @@ const Footer = () => {
                   <IconButton
                     aria-label="Newsletter abonnieren"
                     icon={<FaArrowRight />}
+                    size="sm"
                     colorScheme="brand"
                     bgGradient="linear(to-r, brand.500, accent.500)"
                     _hover={{
@@ -234,16 +230,16 @@ const Footer = () => {
         <Container
           as={Stack}
           maxW="container.xl"
-          py={6}
+          py={{ base: 3, md: 4 }}
           direction={{ base: 'column', md: 'row' }}
-          spacing={4}
+          spacing={{ base: 1, md: 2 }}
           justify={{ md: 'space-between' }}
           align={{ md: 'center' }}
         >
-          <Text fontSize="sm">
+          <Text fontSize="xs" color="gray.500">
             © {year} VIZIO Commerce. {t('footer.copyright')}
           </Text>
-          <Stack direction="row" spacing={6}>
+          <Stack direction="row" spacing={{ base: 2, md: 4 }}>
             <FooterLink to="/privacy">{t('footer.privacy')}</FooterLink>
             <FooterLink to="/imprint">{t('footer.imprint')}</FooterLink>
             <FooterLink to="/terms">{t('footer.terms')}</FooterLink>

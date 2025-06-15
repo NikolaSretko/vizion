@@ -117,13 +117,13 @@ const CaseStudy = () => {
                     borderRadius="md"
                     mb={3}
                   >
-                    Fashion DTC Brand
+                    Deep Care 
                   </Badge>
                   <Heading color="gray.800" size="xl" mb={4}>
-                    Von 0 auf 7-stellig in 12 Monaten: Fashion-Brand erobert den europäischen Markt
+                    Von 0 auf 7-stellig in 12 Monaten: Deep Care erobert den DACH Raum
                   </Heading>
                   <Text color="gray.600" fontSize="lg">
-                    Wie wir einem DTC Fashion-Startup geholfen haben, seinen Umsatz zu verzehnfachen und erfolgreich nach Österreich, Schweiz und Frankreich zu expandieren.
+                    Wie wir einem Health Care Startup geholfen haben, seinen Umsatz zu verzehnfachen und erfolgreich nach Österreich und Schweiz zu expandieren.
                   </Text>
                 </Box>
                 
@@ -201,7 +201,7 @@ const CaseStudy = () => {
                   left={0}
                   right={0}
                   bottom={0}
-                  backgroundImage="linear-gradient(135deg, #1496ff 0%, #0068d6 100%)"
+                  backgroundImage="../../../public/3-scaled.webp"
                   backgroundSize="cover"
                   backgroundPosition="center"
                   display="flex"
@@ -210,9 +210,9 @@ const CaseStudy = () => {
                 >
                   <VStack>
                     <Text fontSize="3xl" fontWeight="bold" color="white">
-                      Fashion Brand
+                      ISA
                     </Text>
-                    <Text color="whiteAlpha.800">Case Study Image</Text>
+                    {/* <Text color="whiteAlpha.800">Case Study Image</Text> */}
                   </VStack>
                 </Box>
                 
